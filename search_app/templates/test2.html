@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="../static/test2.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="header">
+        <h1>Spotify Search</h1>
+        <div class="search">
+            <form method="POST">
+                {% csrf_token %}
+                <input class="search_area" type="text" id="query" name="query" placeholder="検索" required>
+                {% load static %}
+                <button class="search_bottun" type="submit"><img src="{% static 'images/search.png' %}" style="width:30px;height:30px;"></button>
+            </form>
+        </div>
+    </div>
+    {% if request %}
+        <p class="request">'{{ request }}'の検索結果を表示しています</p>
+    {% endif %}
+
+
+{% if results %}
+    <div class="error_resutls">
+        {% if result.message %}
+            <p class="message">{{ result.message }}</p>
+        {% elif result.error %}
+            <p class="error">{{ result.error }}</p>
+    </div>
+{% endif %}
+    {% if results_track %}
+        <p class="section">楽曲</p>
+    {% endif %}
+    <div class="content_track">
+        <div class="scroll_content">
+        {% for result in results_track %}
+            <div class="results_track">
+                {% if result.image %}
+                <img class="img" src="{{ result.image }}" alt="{{ result.name }}" style="width:80px;height:80px;">
+                {% else %}
+                {% load static %}
+                <img class="sub_img" src="{% static 'images/sub_img.jpeg' %}" alt="代替画像" style="width:80px;height:80px;">
+                {% endif %}
+                <div class="pr">
+                    <p class="card_name">{{ result.name }}</p>
+                    <p class="card_artist">{{ result.artist }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% if results_artist %}
+        <p class="section">アーティスト</p>
+    {% endif %}
+    <div class="content_artist">
+        <div class="scroll_content scroll_content_artist">
+            {% for result in results_artist %}
+                <div class="results_artist">
+                    {% if result.image %}
+                    <img class="img_artist" src="{{ result.image }}" alt="{{ result.name }}" style="width:100px;height:100px;">
+                    {% else %}
+                    {% load static %}
+                    <img class="sub_img_artist" src="{% static 'images/sub_img.jpeg' %}" alt="代替画像" style="width:100px;height:100px;">
+                    {% endif %}
+                    <p class="card_name card_name_artist">{{ result.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+        <!-- <div class="results">
+            {% if result.image %}
+                <img class="img" src="{{ result.image }}" alt="{{ result.name }}" style="width:150px;height:150px;">
+            {% else %}
+                {% load static %}
+                <img class="sub_img" src="{% static 'images/sub_img.jpeg' %}" alt="代替画像" style="width:150px;height:150px;">
+            {% endif %}
+            <p class="card_font">名前: {{ result.name }}</p>
+            {% if result.followers %}
+                <p class="card_font">フォロワー数: {{ result.followers }}</p>
+            {% endif %}
+            {% if result.album %}
+                <p class="card_font">アルバム: {{ result.album }}</p>
+            {% endif %}
+            {% if result.artist %}
+                <p class="card_font">アーティスト: {{ result.artist }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endif %} -->
+
+{% endblock content %}
