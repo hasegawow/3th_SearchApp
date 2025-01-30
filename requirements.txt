@@ -1,0 +1,16 @@
+asgiref==3.8.1
+beautifulsoup4==4.12.3
+certifi==2024.8.30
+charset-normalizer==3.4.0
+Django==3.2
+idna==3.10
+psycopg2==2.9.9
+python-decouple==3.8
+pytz==2024.2
+redis==5.2.1
+requests==2.32.3
+setuptools==75.1.0
+soupsieve==2.6
+spotipy==2.24.0
+sqlparse==0.5.1
+urllib3==2.2.3
