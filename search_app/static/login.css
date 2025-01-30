@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    overflow: hidden;
+    background: linear-gradient(rgb(62, 62, 62),rgb(0, 0, 0));
+}
+
+.menu {
+    margin: 0 auto;
+    background-color: rgb(90, 162, 173);
+    padding-top: 100px;
+    margin-top: 120px;
+    border-radius: 10px 10px 0px 0px;
+    width: 700px;
+    height: 661px;
+    text-align: center;
+}

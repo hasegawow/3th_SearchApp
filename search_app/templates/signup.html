@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    <link rel="stylesheet" href="../static/signup.css">
+{% endblock %}
+
 {% block content %}
+<div class="menu">
     {% load static %}
     <h1>Signup</h1>
     {{ error_message }}
@@ -20,8 +25,6 @@
         <br>
         <button type="submit">Signup</button>
     </form>
-
     {% load static %}
-
-    <img src="{% static 'images/cat.png' %}" alt="Cat">
+</div>
 {% endblock content %}

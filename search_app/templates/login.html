@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    <link rel="stylesheet" href="../static/login.css">
+{% endblock %}
+
 {% block content %}
+
+<div class="menu">
     <h1>Login</h1>
     {{ error_message }}
     <form method="POST">
@@ -13,4 +19,5 @@
         <br>
         <button type="submit">Login</button>
     </form>
+</div>
 {% endblock content %}

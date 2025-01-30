@@ -5,20 +5,52 @@ body {
 
 .header {
     display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.home_header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    background-color: rgb(44, 0, 0);
+    display: flex;
+    background: linear-gradient(rgb(31, 0, 5),rgb(0, 0, 0));
+}
+
+.ranking_num {
+    display: flex;
+    text-align: center;
+    width: 25%;
+}
+
+.num {
+    color: white;
+    text-align: center;
+    width: 80px;
 }
 
 .card_artist {
     color: white;
 }
 
-h1 {
+.title {
     color: aqua;
     font-family: "Courier New";
+    background-color: black;
     margin: 0;
     padding-top: 20px;
-    width: 50%;
+    width: 25%;
     padding-bottom: 10px;
     border-bottom:  1px solid;
+}
+
+.home_title {
+    color: aqua;
+    margin-left: 40px;
+    font-family: "Courier New";
+    font-family: "ヒラギノ丸ゴ ProN";
 }
 
 .pr {
@@ -26,6 +58,74 @@ h1 {
     font-family: "ヒラギノ丸ゴ ProN";
     font-weight: 100px;
     color: white;
+}
+
+.pr2 {
+    width: 25%;
+    text-align: center;
+}
+
+.home_status {
+    display: flex;
+    border-bottom: 1px solid rgb(82, 82, 82);
+}
+
+.status_ {
+    color: white;
+    width: 25%;
+    padding-left: 65px;
+}
+
+.status_title {
+    color: white;
+    margin-left: -30px;
+    width: 25%;
+    text-align: center;
+}
+
+.status_popularity {
+    color: white;
+    width: 25%;
+    text-align: center;
+}
+
+.status_duration {
+    color: white;
+    width: 25%;
+    text-align: center;
+}
+
+.home_card_name {
+    font-family: "ヒラギノ丸ゴ ProN";
+    font-weight: 100px;
+    color: white;
+}
+
+.home_card_artist {
+    font-family: "ヒラギノ丸ゴ ProN";
+    font-family: "Courier New";
+    font-weight: 100px;
+    color: white;
+}
+
+.home_card_duration {
+    font-family: "ヒラギノ丸ゴ ProN";
+    font-family: "Courier New";
+    font-weight: 100px;
+    width: 25%;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.home_card_popularity {
+    font-family: "ヒラギノ丸ゴ ProN";
+    font-family: "Courier New";
+    font-weight: 100px;
+    width: 25%;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .card_name {
@@ -47,6 +147,10 @@ h1 {
     text-align: center;
 }
 
+.card_name_album {
+    text-align: center;
+}
+
 .request {
     color: white;
     margin-left: 30px;
@@ -63,9 +167,32 @@ h1 {
 }
 
 .search {
+    background-color: black;
     color: aqua;
     width: 50%;
     border-bottom: 1px solid;
+}
+
+.reset {
+    width: 25%;
+    height: 71px;
+    background-color: black;
+    border-bottom:  1px solid aqua;
+}
+
+.reset_button {
+    font-family: "ヒラギノ丸ゴ ProN";
+    margin-top: 20px;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.home_icon {
+    margin-right: 7px;
+    margin-bottom: -2px;
 }
 
 .search_area {
@@ -89,10 +216,6 @@ h1 {
 
 }
 
-.error_resutls {
-    margin: 0 auto;;
-}
-
 .content_track {
     flex-wrap: wrap;
     margin-top: 30px;
@@ -105,10 +228,9 @@ h1 {
     overflow-y: auto; /* 横スクロールを許可 */
 }
 
-/* .content_artist::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-} */
+.content_album {
+    overflow-y: auto; /* 横スクロールを許可 */
+}
 
 .scroll_content {
     display: grid;
@@ -123,9 +245,19 @@ h1 {
     border-radius: 30px;
 }
 
+.ranking_track {
+    display: flex;
+}
+
 .results_artist {
     margin: 20px;
     padding: 5px 10px 5px 10px;
+}
+
+.results_album {
+    margin: 15px;
+    padding: 10px 20px 10px 20px;
+    border: 1px dashed white;
 }
 
 .scroll_conent {
@@ -145,6 +277,11 @@ h1 {
     width: 150px;
 }
 
+.img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 242, 255, 0.538);
+}
+
 .sub_img {
     height: 150px;
     width: 150px;
@@ -156,7 +293,26 @@ h1 {
     border-radius: 100px;
 }
 
+.img_artist:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(255, 0, 0, 0.6);
+}
+
 .sub_img_artist {
     margin: 0 auto;
     border-radius: 100px;
 }
+
+
+
+.img_album:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.6);
+}
+
+.home_img {
+    border-radius: 5px;
+}
+
+
+

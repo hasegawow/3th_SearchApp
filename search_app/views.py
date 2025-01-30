@@ -3,7 +3,7 @@ from .models import Users2
 from .spotify_utils.spotify import get_token, search_artist, get_artist_top_tracks
 from urllib.parse import quote
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyClientCredentials,  SpotifyOAuth
 from decouple import config
 
 
@@ -49,23 +49,16 @@ def login(request):
     else:
         return render(request, 'login.html')
 
-
-# class CustomSpotipy(spotipy.Spotify):
-    # def _internal_call(self, method, url, payload=None, params=None, headers=None, **kwargs):
-    #     # デフォルトヘッダーにAccept-Languageを追加
-    #     if headers is None:
-    #         headers = {}
-    #     headers["Accept-Language"] = "ja"  # 日本語をリクエスト
-    #     return super()._internal_call(method, url, payload, params, headers, **kwargs)
-
 def artist_search(request):
     query = request.POST.get("query")  # ユーザーの検索キーワード
     results = []
     results_track = []
     resutls_album = []
     results_artist = []
+    ranking_track = []
 
     if query:
+        boolean = True
         sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
             client_id=config("CLIENT_ID"),
             client_secret=config("CLIENT_SECRET")
@@ -108,6 +101,45 @@ def artist_search(request):
         except Exception as e:
             results = [{"error": f"エラーが発生しました: {str(e)}"}]
     else:
-        results = [{"message": "検索キーワードを入力してください。"}]
+        boolean = False
+        sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
+            client_id=config("CLIENT_ID"),
+            client_secret=config("CLIENT_SECRET")
+            ))
 
-    return render(request, "test2.html", {"results": results,"results_track": results_track, "results_album": resutls_album,"results_artist": results_artist ,"request": query})
+        playlist_id = "4Bsknjekv8HNfUF57ELNot"
+        playlist = sp.playlist_tracks(playlist_id, market="JP")
+        ranking_track = []
+
+        for item in playlist['items']:
+            track = item['track']
+
+            duration_ms = track['duration_ms']
+            minutes = duration_ms // 60000  # 分
+            seconds = (duration_ms % 60000) // 1000  # 秒
+            popularity = track['popularity']
+            print(popularity)
+
+            ranking_track.append({
+                "type": "track",
+                "name": track['name'],
+                "artist": ', '.join(artist['name'] for artist in track['artists']),
+                "image": track['album']['images'][0]['url'] if track['album']['images'] else None,
+                "duration": f"{minutes}:{seconds}",
+                "popularity": popularity
+    })
+
+
+
+    return render(request, "test2.html", {
+        "results_track": results_track,
+        "results_album": resutls_album,
+        "results_artist": results_artist,
+        "ranking_track": ranking_track,
+        "request": query,
+        "boolean": boolean
+        })
+def reset_search(request):
+
+    return redirect('search')
+
