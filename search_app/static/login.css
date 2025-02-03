@@ -1,16 +1,80 @@
 body {
-    background-color: black;
+    background-color: rgb(122, 122, 122);
     overflow: hidden;
-    background: linear-gradient(rgb(62, 62, 62),rgb(0, 0, 0));
+    background-image: url("https://kimini.online/blog/wp-content/uploads/2023/09/pixta_74899064_M-1200x675.jpg");
+}
+
+.title {
+    margin: 0 auto;
+    font-family: "ヒラギノ丸ゴ ProN";
+    margin-bottom: 50px;
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
 }
 
 .menu {
     margin: 0 auto;
-    background-color: rgb(90, 162, 173);
+    background-color: rgb(103, 183, 196);
     padding-top: 100px;
     margin-top: 120px;
     border-radius: 10px 10px 0px 0px;
     width: 700px;
     height: 661px;
     text-align: center;
+}
+
+.username {
+    font-family: "ヒラギノ丸ゴ ProN";
+    background: none;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border: 1px black solid;
+    outline: 0;
+    margin-bottom: 20px;
+    border-radius: 100px;
+}
+
+.username:hover {
+    border: 1px rgba(0, 118, 136, 0.987) solid;
+    border-radius: 100px;
+}
+
+.pass {
+    font-family: "ヒラギノ丸ゴ ProN";
+    background: none;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border: 1px black solid;
+    outline: 0;
+    margin-bottom: 20px;
+    border-radius: 100px;
+}
+
+.pass:hover {
+    border: 1px rgba(0, 118, 136, 0.987) solid;
+    border-radius: 100px;
+}
+
+.submit {
+    font-family: "ヒラギノ丸ゴ ProN";
+    height: 30px;
+    width: 190px;
+    border-radius: 100px;
+    border: 1px black solid;
+}
+
+.submit:hover {
+    box-shadow: 0px 1px 10px rgb(80, 80, 80);
+}
+
+.redirect {
+    font-size: 12px;
+    font-family: "ヒラギノ丸ゴ ProN";
+    margin-left: -60px;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background: none;
+    color: rgb(255, 65, 65);
 }

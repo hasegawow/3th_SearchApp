@@ -18,7 +18,7 @@ def signup(request):
             if not Users2.objects.filter(username=username).exists():
                 user = Users2.objects.create(password=password, username=username, email=email)
                 user.save()
-                return redirect('main')
+                return redirect('search')
             else:
                 error_message = "このユーザーネームはすでに使用されています、ボケが。"
                 return render(request, 'signup.html', {'error_message': error_message})
@@ -28,9 +28,6 @@ def signup(request):
     else:
         return render(request, 'signup.html')
 
-def main(request):
-    return render(request, 'main.html')
-
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -38,7 +35,7 @@ def login(request):
 
         if Users2.objects.filter(username=username).exists() or Users2.objects.filter(email=username).exists():
             if Users2.objects.filter(password=password).exists():
-                return redirect('main')
+                return redirect('search')
             else:
                 error_message = "パスワードが違います"
                 return render(request, 'login.html', {'error_message': error_message})
@@ -118,7 +115,6 @@ def artist_search(request):
             minutes = duration_ms // 60000  # 分
             seconds = (duration_ms % 60000) // 1000  # 秒
             popularity = track['popularity']
-            print(popularity)
 
             ranking_track.append({
                 "type": "track",
